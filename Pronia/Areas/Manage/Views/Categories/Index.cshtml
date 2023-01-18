@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewData["Title"] = "Categories";
+}
+
+@model List<Category>
+
+<style>
+    table {
+  counter-reset: section;
+}
+
+.count:before {
+  content: counter(section);
+  counter-increment: section;
+}
+</style>
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Categories</h1>
+   
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+          
+            <a class="btn btn-success" asp-area="Manage" asp-controller="Categories" asp-action="Create">Add</a>
+           
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Category item in Model)
+                        {
+                            <tr>
+                                <td class="count"></td>
+                                <td>@item.Name</td>
+                                <td>
+                                    <label>
+                                        @(item.IsActive ? "Active" : "Inactive")
+                                    </label>
+                                    <a class="btn btn-warning ms-2" asp-area="Manage" asp-controller="Categories" asp-action="ChangeStatus" asp-route-id="@item.Id">Change</a>
+                                </td>
+                                <td><a class="btn btn-warning" asp-area="Manage" asp-controller="Categories" asp-action="Update" asp-route-id="@item.Id">Update</a></td>
+								<td><a class="btn btn-danger" asp-area="Manage" asp-controller="Categories" asp-action="Delete" asp-route-id="@item.Id">Delete</a></td>
+                            </tr>
+                        }
+                                        
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
+
+
+
+
+

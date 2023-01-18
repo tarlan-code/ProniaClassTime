@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewData["Title"] = "Testimonial Create";
+}
+
+
+
+
+@model Testimonial
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-11">
+			<h5>Create testimonial item</h5>
+			<form class="user" method="post" >
+				<div class="form-group row">
+					<div class="col-sm-4 mb-sm-2">
+						<input asp-for="Name" type="text" class="form-control form-control-user"
+							   placeholder="Name">
+						<span asp-validation-for="Name"></span>
+					</div>
+					<div class="col-sm-4 mb-sm-2">
+						<input asp-for="Surname" type="text" class="form-control form-control-user"
+							   placeholder="Surname">
+						<span asp-validation-for="Surname"></span>
+
+					</div>
+					<div class="col-sm-4 mb-sm-2">
+						<input asp-for="Image" type="text" class="form-control form-control-user"
+							   placeholder="Image">
+						<span asp-validation-for="Image"></span>
+
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-sm-6 mb-sm-2">
+						<input asp-for="Occupation" type="text" class="form-control form-control-user"
+							   placeholder="Occupation">
+						<span asp-validation-for="Occupation"></span>
+
+					</div>
+					<div class="col-sm-6">
+						<label asp-for="Comment"></label>
+						<textarea asp-for="Comment" class="form-control form-control-user rounded-0"></textarea>
+						
+						<span asp-validation-for="Comment"></span>
+
+					</div>
+				</div>
+				
+
+				<div class="row justify-content-center">
+
+					<div class="col-lg-5 col-sm-12 col-md-10 ">
+
+						<button type="submit" class="btn btn-primary btn-user btn-block">
+							Create
+						</button>
+						<hr>
+						<a asp-action="Index" asp-controller="Testimonials" class="btn btn-google btn-user btn-block">
+							Cancel
+						</a>
+					</div>
+				</div>
+
+			</form>
+
+		</div>
+	</div>
+</div>
+
+
+
+
+

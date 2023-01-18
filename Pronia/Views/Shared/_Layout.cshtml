@@ -1,0 +1,150 @@
+﻿@using Pronia.Services
+@inject LayoutService service;
+@{
+	Dictionary<string, string> settings = service.GetSettings();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Pronia - Plant Store Bootstrap 5 Template</title>
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="description"
+      content="Pronia plant store bootstrap 5 template is an awesome website template for any home plant shop."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="~/assets/images/favicon.ico"
+    />
+    <!-- CSS
+    ============================================ -->
+
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/assets/css/Pe-icon-7-stroke.css" />
+    <link rel="stylesheet" href="~/assets/css/animate.min.css" />
+    <link rel="stylesheet" href="~/assets/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="~/assets/css/nice-select.css" />
+    <link rel="stylesheet" href="~/assets/css/magnific-popup.min.css" />
+    <link rel="stylesheet" href="~/assets/css/ion.rangeSlider.min.css" />
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="~/assets/css/style.css" />
+  </head>
+
+  <body>
+    <div class="preloader-activate preloader-active open_tm_preloader">
+      <div class="preloader-area-wrap">
+        <div
+          class="spinner d-flex justify-content-center align-items-center h-100"
+        >
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
+      </div>
+    </div>
+    <div class="main-wrapper">
+        @await Component.InvokeAsync("Header");
+        @RenderBody()
+        @await Component.InvokeAsync("Footer");
+        
+
+
+        
+        <!--Modal-->
+
+
+
+
+
+        <!-- Begin Scroll To Top -->
+        <a class="scroll-to-top" href="">
+            <i class="fa fa-angle-double-up"></i>
+        </a>
+        <!-- Scroll To Top End Here -->
+    </div>
+
+    <!-- Global Vendor, plugins JS -->
+    <!-- JS Files
+    ============================================ -->
+
+    @*<script src="~/assets/js/vendor/bootstrap.bundle.min.js"></script>*@
+    <script src="~/assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="~/assets/js/vendor/jquery-migrate-3.3.2.min.js"></script>
+    <script src="~/assets/js/vendor/jquery.waypoints.js"></script>
+    <script src="~/assets/js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="~/assets/js/plugins/wow.min.js"></script>
+    <script src="~/assets/js/plugins/swiper-bundle.min.js"></script>
+    <script src="~/assets/js/plugins/jquery.nice-select.js"></script>
+    <script src="~/assets/js/plugins/parallax.min.js"></script>
+    <script src="~/assets/js/plugins/jquery.magnific-popup.min.js"></script>
+    <script src="~/assets/js/plugins/tippy.min.js"></script>
+    <script src="~/assets/js/plugins/ion.rangeSlider.min.js"></script>
+    <script src="~/assets/js/plugins/mailchimp-ajax.js"></script>
+    <script src="~/assets/js/plugins/jquery.counterup.js"></script>
+    <script src="~/assets/js/plugins.min.js"></script>
+
+    <!--Main JS (Common Activation Codes)-->
+    <script src="~/assets/js/main.js"></script>
+
+    <script>
+        let count = $('.minicart-list .minicart-product').length
+        $(".quantity").html(count)
+        
+        $(document).on("click", ".addbasket", function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: this.href,
+
+                success: function (data) {
+                    if (data == "Ok") {
+                        $.ajax({
+                            type: "POST",
+                            url: "/Home/LoadBasket",
+                            success: function (response) {
+                                $("#miniCart").html(response)
+                                let count = $('.minicart-list .minicart-product').length
+                                $(".quantity").html(count)
+                            },
+                            error: function (err) {
+                                console.log(err)
+                            }
+
+
+                        })
+                    }
+                },
+                error: function (err) {
+                    console.log(err)
+                }
+            });
+
+        })
+
+
+        $(".minicart-btn").click(function () {
+            let element = $("#miniCart");
+            if (element.hasClass("open") == true) {
+                element.removeClass("open");
+            }
+            else {
+                element.addClass("open");
+                element.addClass("open");
+            }
+        })
+    </script>
+
+    @await RenderSectionAsync("scripts",false)
+
+
+</body>
+</html>
+
