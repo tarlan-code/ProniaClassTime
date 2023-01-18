@@ -17,9 +17,11 @@ connection.on("ReceiveMessage", function (message,user) {
     $("#messageInput").val('');
 });
 
-connection.on("SetOnline", function (name) {
-    console.log(`#${name} span`);
-    $(`#${name}`).html(`<i class="fa fa-circle online"></i> <span class="small">Online</span> `)
+connection.on("SetOnline", function (names) {
+    $(names).each(function (index, item) {
+        console.log(item.username)
+        $(`#${item.username}`).html(`<i class="fa fa-circle online"></i> <span class="small">Online</span> `)
+    })
 });
 
 
