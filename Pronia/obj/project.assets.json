@@ -10970,19 +10970,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ca.r215.10\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ca.r215.10\\Desktop\\ㅤ\\ProniaRolesAndSendMail\\Pronia\\Pronia.csproj",
+      "projectUniqueName": "D:\\Code Academy\\Asp.NET\\Pronia01.18\\ProniaClassTime\\Pronia\\Pronia.csproj",
       "projectName": "Pronia",
-      "projectPath": "C:\\Users\\ca.r215.10\\Desktop\\ㅤ\\ProniaRolesAndSendMail\\Pronia\\Pronia.csproj",
-      "packagesPath": "C:\\Users\\ca.r215.10\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ca.r215.10\\Desktop\\ㅤ\\ProniaRolesAndSendMail\\Pronia\\obj\\",
+      "projectPath": "D:\\Code Academy\\Asp.NET\\Pronia01.18\\ProniaClassTime\\Pronia\\Pronia.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "D:\\Code Academy\\Asp.NET\\Pronia01.18\\ProniaClassTime\\Pronia\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ca.r215.10\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11066,7 +11066,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.405\\RuntimeIdentifierGraph.json"
       }
     }
   },
