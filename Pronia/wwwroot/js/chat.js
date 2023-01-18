@@ -6,7 +6,7 @@ $(".sendButton").prop('disabled', true);
 
 connection.on("ReceiveMessage", function (message,user) {
     var ul = $("#messagesList");
-    var text = $(`<li>
+    var text = $(`<li class="d-flex flex-row-reverse">
                     <div class="message-data text-right">
                         <span class="message-data-time">${user}</span>
                         <img src=\"https://bootdey.com/img/Content/avatar/avatar7.png\" alt="avatar">

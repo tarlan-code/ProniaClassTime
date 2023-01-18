@@ -41,7 +41,7 @@
                                 <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar">
                                 <div class="about">
                                     <div class="name">@user.Name</div>
-                                        <div id="@user.UserName"><i class="fa fa-circle offline"></i> <span class="small">Offline</span> </div>
+                                    <div id="@user.UserName"><i class="fa fa-circle offline"></i> <span class="small">Offline</span> </div>
                                 </div>
                             </li>
                                 
@@ -82,13 +82,11 @@
                         <div class="chat-message clearfix">
                             <div class="input-group mb-0">
                                 <div class="input-group-prepend">
-                                    <button class="btn sendButton"><i class="fa fa-send"></i></button>
-                                
-                                </div>
-                                <input id="messageInput" type="text" class="form-control" placeholder="Enter text here...">
-                                <form style="visibility:hidden">
-                                    <input class="sendButton" type="submit" style="visibility:hidden"></input>
+                                <form class="custom-control-inline">
+                                    <input id="messageInput" type="text" class="form-control" placeholder="Enter text here...">
+                                    <button type="submit" class="btn sendButton"><i class="fa fa-send"></i></button>
                                 </form>
+                                </div>
                             </div>
                         </div>
                     </div>
