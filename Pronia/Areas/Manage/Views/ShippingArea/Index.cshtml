@@ -1,0 +1,166 @@
+﻿
+@{
+    ViewData["Title"] = "Shipping Area";
+}
+
+@model List<ShippingArea>
+
+
+
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Shipping Area Cards</h1>
+   
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            @if (Model.Count<3)
+            {
+                <a class="btn btn-success" asp-area="Manage" asp-controller="ShippingArea" asp-action="Create">Add</a>
+            }
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Icon</th>
+                            <th>Title</th>
+                            <th>Short Description</th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (ShippingArea item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @if (item.Icon.StartsWith("http"))
+									{
+
+										<img src="@item.Icon" alt="Icon Image" width="40" height="40" />
+									}
+
+									else
+									{
+										<img src="~/assets/images/shipping/@item.Icon" alt="Icon Image"  width="40" height="40" />
+									}
+                                </td>
+                                <td>@item.Title</td>
+                                <td>@item.ShortDesc</td>
+                                <td><a class="btn btn-warning" asp-area="Manage" asp-controller="ShippingArea" asp-action="Update" asp-route-id="@item.Id">Update</a></td>
+								<td><a class="btn btn-danger" asp-area="Manage" asp-controller="ShippingArea" asp-action="Delete" asp-route-id="@item.Id">Delete</a></td>
+                            </tr>
+                        }
+                                        
+                    </tbody>
+                </table>
+
+                <h2 class="h3 mb-2 text-gray-800">Demo</h2>
+
+
+                @*Demo version*@
+                @if (Model is not null)
+                {
+                    <!-- Begin Shipping Area -->
+                    <div class="shipping-area section-space-top-100">
+                        <div class="container">
+                            <div class="shipping-bg">
+                                <div class="row shipping-wrap justify-content-center">
+
+                                    @for (int i = 0; i < Model.Count; i++)
+                                    {
+                                        ShippingArea sa = Model[i];
+                                        @switch (i)
+                                        {
+                                            case 0:
+                                                <div class="col-lg-4 col-md-6">
+                                                    <div class="shipping-item">
+                                                        <div class="shipping-img">
+                                                            @if (sa.Icon.StartsWith("http"))
+                                                            {
+
+                                                                <img src="@sa.Icon" alt="Icon Image" width="40" height="40" />
+                                                            }
+
+                                                            else
+                                                            {
+                                                                <img src="~/assets/images/shipping/@sa.Icon" alt="Icon Image" width="40" height="40" />
+                                                            }
+                                                        </div>
+                                                        <div class="shipping-content">
+                                                            <h2 class="title">@sa.Title</h2>
+                                                            <p class="short-desc mb-0">@sa.ShortDesc</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                break;
+                                            case 1:
+                                                <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
+                                                    <div class="shipping-item">
+                                                        <div class="shipping-img">
+                                                            @if (sa.Icon.StartsWith("http"))
+                                                            {
+
+                                                                <img src="@sa.Icon" alt="Icon Image" width="40" height="40" />
+                                                            }
+
+                                                            else
+                                                            {
+                                                                <img src="~/assets/images/shipping/@sa.Icon" alt="Icon Image" width="40" height="40" />
+                                                            }
+                                                        </div>
+                                                        <div class="shipping-content">
+                                                            <h2 class="title">@sa.Title</h2>
+                                                            <p class="short-desc mb-0">@sa.ShortDesc</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                break;
+                                            case 2:
+                                                <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
+                                                    <div class="shipping-item">
+                                                        <div class="shipping-img">
+                                                            @if (sa.Icon.StartsWith("http"))
+                                                            {
+
+                                                                <img src="@sa.Icon" alt="Icon Image" width="40" height="40" />
+                                                            }
+
+                                                            else
+                                                            {
+                                                                <img src="~/assets/images/shipping/@sa.Icon" alt="Icon Image" width="40" height="40" />
+                                                            }
+                                                        </div>
+                                                        <div class="shipping-content">
+                                                            <h2 class="title">@sa.Title</h2>
+                                                            <p class="short-desc mb-0">@sa.ShortDesc</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                break;
+
+                                            default:
+                                                break;
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Shipping Area End Here -->
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
+
+
+

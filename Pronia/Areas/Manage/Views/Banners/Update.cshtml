@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewData["Title"] = "Banner Update";
+}
+
+@model CreateBannerVM
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-11">
+			<h5>Create Banner item</h5>
+			<form class="user" method="post" enctype="multipart/form-data">
+				<div class="form-group row">
+					<div class="col-sm-6 mb-sm-2">
+						<input asp-for="Collection" type="text" class="form-control form-control-user"
+							   placeholder="Collection">
+						<span asp-validation-for="Collection"></span>
+					</div>
+					<div class="col-sm-6 mb-sm-2">
+						<input asp-for="Title" type="text" class="form-control form-control-user"
+							   placeholder="Title">
+						<span asp-validation-for="Title"></span>
+					</div>
+
+
+				</div>
+				<div class="form-group row">
+					<div class="col-sm-4 mb-sm-2">
+						<input asp-for="BtnText" type="text" class="form-control form-control-user"
+							   placeholder="Button Text">
+						<span asp-validation-for="BtnText"></span>
+
+					</div>
+					<div class="col-sm-4 mb-sm-2">
+						<input asp-for="BtnUrl" type="text" class="form-control form-control-user"
+							   placeholder="Button URL">
+						<span asp-validation-for="BtnUrl"></span>
+
+					</div>
+					<div class="col-sm-4 mb-sm-2">
+						<label asp-for="Order" class="d-block"></label>
+						<select asp-for="Order" )">
+							<option disabled default>Select</option>
+							@foreach (int order in ViewBag.Orders)
+							{
+								<option>@order</option>
+
+							}
+						</select>
+						<span asp-validation-for="Order" class="d-block"></span>
+					</div>
+
+				</div>
+
+				<div class="form-group row ">
+					<div class="col-sm-6 form-group">
+						<label asp-for="FileURL" class="d-block">Image URL</label>
+						<input asp-for="FileURL" class="form-control form-control-user">
+
+					</div>
+					<div class="col-sm-6 form-group">
+						<label asp-for="File" class="d-block">Choose Image</label>
+						<input asp-for="File" accept="image/*" style="cursor:pointer">
+
+					</div>
+					<span class="mx-auto" asp-validation-for="File"></span>
+					<span asp-validation-for="FileURL"></span>
+				</div>
+
+				<div class="row justify-content-center">
+
+					<div class="col-lg-5 col-sm-12 col-md-10 ">
+
+						<button type="submit" class="btn btn-primary btn-user btn-block">
+							Update
+						</button>
+						<hr>
+						<a asp-action="Index" asp-controller="Banners" class="btn btn-danger btn-user btn-block">
+							Cancel
+						</a>
+					</div>
+				</div>
+
+			</form>
+
+		</div>
+	</div>
+</div>
+
+
+

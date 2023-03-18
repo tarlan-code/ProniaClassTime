@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewData["Title"] = "Testimonial Area";
+}
+
+@model TestimonialArea
+
+<!-- CSS
+============================================ -->
+<link rel="stylesheet" href="~/assets/css/font-awesome.min.css" />
+<link rel="stylesheet" href="~/assets/css/animate.min.css" />
+<link rel="stylesheet" href="~/assets/css/swiper-bundle.min.css" />
+
+
+<!-- Style CSS -->
+<link rel="stylesheet" href="~/assets/css/style.css" />
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Tetimonial Area</h1>
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            @if (Model is null)
+            {
+                <a class="btn btn-success" asp-area="Manage" asp-controller="TestimonialArea" asp-action="Create">Add</a>
+            }
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                            @if(Model is not null){
+                                <tr>
+                                
+                                    <td>@Model.Title</td>
+                                    <td>@Model.Desc</td>
+                                <td><a class="btn btn-warning" asp-area="Manage" asp-controller="TestimonialArea" asp-action="Update" asp-route-id="@Model.Id">Update</a></td>
+                                <td><a class="btn btn-danger" asp-area="Manage" asp-controller="TestimonialArea" asp-action="Delete" asp-route-id="@Model.Id">Delete</a></td>
+                                </tr>
+                            }
+                        
+
+                    </tbody>
+                </table>
+
+                <h2 class="h3 mb-2 text-gray-800">Demo</h2>
+
+
+                @*Demo version*@
+                <!-- Begin Testimonial Area -->
+
+                <div class="testimonial-area section-space-top-90 section-space-bottom-95">
+                    @if (Model is not null && ViewBag.Testimonials is not null && ViewBag.Testimonials.Count > 0)
+                    {
+                        <div class="container-fluid">
+
+
+                            <div class="testimonial-bg"
+                             data-bg-image="../assets/images/testimonial/bg/1-1-1820x443.jpg">
+                                <div class="section-title-wrap">
+                                    <h2 class="section-title">@Model.Title</h2>
+                                    <p class="section-desc mb-0">
+                                        @Model.Desc
+                                    </p>
+                                </div>
+                            </div>
+
+
+
+                            <div class="container custom-space">
+                                <div class="swiper-container testimonial-slider with-bg">
+                                    <div class="swiper-wrapper">
+                                        @foreach (Testimonial item in ViewBag.Testimonials)
+                                        {
+                                            <div class="swiper-slide testimonial-item">
+                                                <div class="user-info mb-3">
+                                                    <div class="user-shape-wrap">
+                                                        <div class="user-img">
+                                                            <img src="~/assets/images/website-images/@item.Image"
+                                                         alt="User Image" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="user-content text-charcoal">
+                                                        <h4 class="user-name mb-1">@item.Name @item.Surname</h4>
+                                                        <span class="user-occupation">@item.Occupation</span>
+                                                    </div>
+                                                </div>
+                                                <p class="user-comment mb-6">
+                                                    @item.Comment
+                                                </p>
+                                            </div>
+
+                                        }
+                                    </div>
+                                    <!-- Add Pagination -->
+                                    <div class="swiper-pagination without-absolute"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                    else{
+                        <p class="text-danger">*"Testimonial Area" does not see because it is not Testimonials or TestimonialArea</p>
+
+                    }
+                </div>
+                <!-- Testimonial Area End Here -->
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
+
+<script src="~/assets/js/vendor/jquery-3.6.0.min.js"></script>
+<script src="~/assets/js/vendor/jquery-migrate-3.3.2.min.js"></script>
+<script src="~/assets/js/vendor/jquery.waypoints.js"></script>
+<script src="~/assets/js/plugins/wow.min.js"></script>
+<script src="~/assets/js/plugins/swiper-bundle.min.js"></script>
+
+
+<!--Main JS (Common Activation Codes)-->
+<script src="~/assets/js/main.js"></script>

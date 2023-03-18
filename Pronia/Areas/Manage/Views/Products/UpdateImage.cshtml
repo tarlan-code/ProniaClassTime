@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewData["Title"] = "UpdateImage";
+}
+
+
+@model UpdateProductImgVM
+
+<div class="container">
+<div class="row justify-content-center">
+	<div class="col-11">
+		<h5>Update Product</h5>
+		<form class="user" method="post" enctype="multipart/form-data">
+
+				<div class="form-group row ">
+					<div class="col-sm-12 form-group">
+						<label asp-for="CoverImage" class="d-block">Cover Image</label>
+						<input asp-for="CoverImage" accept="image/*" style="cursor:pointer">
+						<span asp-validation-for="CoverImage"></span>
+					</div>
+					<div>
+						<img src="~/assets/images/product/@Model.ProductImages.FirstOrDefault(pi=>pi.IsCover == true).Image"/>
+					</div>
+				</div>
+				<div class="form-group row ">
+					<div class="col-sm-12 form-group">
+						<label asp-for="HoverImage" class="d-block">Hover Image</label>
+						<input asp-for="HoverImage" accept="image/*" style="cursor:pointer">
+						<span asp-validation-for="HoverImage"></span>
+					</div>
+					@if (@Model.ProductImages.FirstOrDefault(pi => pi.IsCover == false) != null){
+					<div>
+						<img src="~/assets/images/product/@Model.ProductImages.FirstOrDefault(pi=>pi.IsCover == false).Image" />
+					</div>
+					}
+				</div>
+				<div class="form-group row ">
+					<div class="col-sm-12 form-group">
+						<label asp-for="OtherImages" class="d-block">Others Image</label>
+						<input asp-for="OtherImages" accept="image/*" style="cursor:pointer">
+						<span asp-validation-for="OtherImages"></span>
+					</div>
+					<div class="container">
+						<div class="row">
+							@foreach (var item in Model.ProductImages.Where(pi=> pi.IsCover == null))
+							{
+								<div class="col-md-4 position-relative mt-3">
+									<a class="position-absolute rem-img" asp-action="DeleteProductImage" asp-route-id="@item.Id" itemid="@item.Id" style="top:0; z-index:2; right:13px; cursor:pointer">X</a>
+									<img class="w-100 " src="~/assets/images/product/@item.Image" />
+								</div>
+							}
+						</div>
+					</div>
+
+				</div>
+			
+
+			<div class="row justify-content-center">
+
+				<div class="col-lg-5 col-sm-12 col-md-10 ">
+
+					<button type="submit" class="btn btn-primary btn-user btn-block">
+						Update
+					</button>
+					<hr>
+					<a asp-action="Update" asp-controller="Products" asp-route-id="@Model.ProductImages.FirstOrDefault().ProductId" class="btn btn-danger btn-user btn-block">
+						Cancel
+					</a>
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+</div>
+</div>
+
+
+
+@section scripts{
+	
+	<script>
+
+		$(".rem-img").click(function(e){
+			e.preventDefault();
+			let div = $(this).parent();
+			fetch($(this).attr("href"))
+			.then(res => {
+				if(res.status==200)
+				{
+					div.remove();
+				}
+				
+			}).catch(err=> console.log(err))
+		});
+	</script>
+
+}
+
+

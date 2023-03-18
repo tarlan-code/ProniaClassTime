@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewData["Title"] = "Update";
+}
+
+@model UpdateProductVM
+
+<div class="container">
+<div class="row justify-content-center">
+	<div class="col-11">
+		<h5>Update Product</h5>
+			<a asp-action="UpdateImage" asp-controller="Products" asp-route-id="@Model.Id" class="btn btn-primary btn-user btn-block">
+				Update Image
+			</a>
+		<form class="user" method="post">
+			<div class="form-group row">
+				<div class="col-sm-4 mb-sm-2 mt-5">
+					<input asp-for="Name" class="form-control"
+							placeholder="Name">
+					<span asp-validation-for="Name"></span>
+				</div>
+				<div class="col-sm-8 mb-sm-2">
+					<label asp-for="Desc">Description</label>
+					<textarea asp-for="Desc" class="form-control"></textarea>
+					<span asp-validation-for="Desc"></span>
+
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-4 mb-sm-2">
+					<input asp-for="SellPrice" type="text" class="form-control form-control-user"
+							placeholder="Sell Price">
+					<span asp-validation-for="SellPrice"></span>
+
+				</div>
+				<div class="col-sm-4 mb-sm-2">
+					<input asp-for="CostPrice" type="text" class="form-control form-control-user"
+							placeholder="Cost Price">
+					<span asp-validation-for="CostPrice"></span>
+
+				</div>
+				<div class="col-sm-4 mb-sm-2">
+					<input asp-for="Discount" type="text" class="form-control form-control-user"
+							placeholder="Discount">
+					<span asp-validation-for="Discount"></span>
+
+				</div>
+
+			</div>
+			<div class="form-group row ">
+				<div class="col-sm-4 form-group">
+					<label asp-for="ColorIds" class="d-block"></label>
+					<select asp-for="ColorIds" class="js-example-basic-multiple form-control"  asp-items="@ViewBag.Colors"></select>
+					<span asp-validation-for="ColorIds"></span>
+				</div>
+				<div class="col-sm-4 form-group">
+					<label asp-for="SizeIds" class="d-block"></label>
+					<select class="js-example-basic-multiple form-control" asp-for="SizeIds" asp-items="@ViewBag.Sizes" ></select>
+					<span asp-validation-for="SizeIds"></span>
+				</div>
+				<div class="col-sm-4 form-group">
+					<label asp-for="CategoryIds" class="d-block"></label>
+					<select class="js-example-basic-multiple form-control" asp-for="CategoryIds" asp-items="@ViewBag.Categories"></select>
+					<span asp-validation-for="CategoryIds"></span>
+				</div>
+
+			</div>
+
+			<div class="row justify-content-center">
+
+				<div class="col-lg-5 col-sm-12 col-md-10 ">
+
+					<button type="submit" class="btn btn-primary btn-user btn-block">
+						Update
+					</button>
+					<hr>
+					<a asp-action="Index" asp-controller="Products" class="btn btn-danger btn-user btn-block">
+						Cancel
+					</a>
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+</div>
+</div>
+
+
+
+<script>
+	$('.js-example-basic-multiple').select2();
+
+</script>
+@section scripts{
+	
+	<partial name="_ValidationPartial" />
+}
